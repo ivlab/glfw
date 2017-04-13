@@ -556,7 +556,9 @@ _GLFWwindow* _glfwPlatformGetCurrentContext(void)
 
 void _glfwPlatformSwapBuffers(_GLFWwindow* window)
 {
+	XLockDisplay(_glfw.x11.display);
     glXSwapBuffers(_glfw.x11.display, window->x11.handle);
+	XUnlockDisplay(_glfw.x11.display);
 }
 
 void _glfwPlatformSwapInterval(int interval)
