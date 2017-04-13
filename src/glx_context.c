@@ -170,7 +170,9 @@ static void makeContextCurrentGLX(_GLFWwindow* window)
 
 static void swapBuffersGLX(_GLFWwindow* window)
 {
+	XLockDisplay(_glfw.x11.display);
     glXSwapBuffers(_glfw.x11.display, window->context.glx.window);
+	XUnlockDisplay(_glfw.x11.display);
 }
 
 static void swapIntervalGLX(int interval)
